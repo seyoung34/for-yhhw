@@ -67,6 +67,16 @@ const foods: Food[] = [
   },
 ]
 
+const imageAssets = [
+  '/younghoon-happy.png',
+  '/younghoon-food.png',
+  '/younghoon-crying.png',
+  '/younghoon-coat.png',
+  '/paris.png',
+  '/teardrop.svg',
+  '/thought-bubble.svg',
+]
+
 function formatDateTime(dateStr: string, timeStr: string) {
   const [year, month, day] = dateStr.split('-').map(Number)
   const weekday = ['일', '월', '화', '수', '목', '금', '토'][
@@ -137,6 +147,13 @@ function App() {
   const [selectedFood, setSelectedFood] = useState<Food | null>(null)
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [isRejectModalOpen, setIsRejectModalOpen] = useState(false)
+
+  useEffect(() => {
+    imageAssets.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [])
 
   return (
     <main className="h-[100svh] overflow-y-auto bg-[radial-gradient(circle_at_top,_#fff8f4,_#ffd7d0_45%,_#ffebe6_72%,_#fff7f2)] px-3 py-3 text-stone-800">
@@ -462,6 +479,10 @@ function DateStep({
       transition={{ duration: 0.35 }}
     >
       <div className="flex min-h-0 flex-1 flex-col justify-center gap-4">
+        <p className="text-center text-xl font-semibold text-stone-900">
+          우리 언제 볼까?
+        </p>
+
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold text-stone-700">
             날짜
