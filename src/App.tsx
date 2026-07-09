@@ -586,6 +586,10 @@ function DoneStep({
   onBack: () => void
   onRestart: () => void
 }) {
+  const dateTimeMatch = selectedDate.match(/^(.*?)\s*((?:오전|오후)\s*\d{1,2}:\d{2})$/)
+  const datePart = dateTimeMatch ? dateTimeMatch[1] : selectedDate
+  const timePart = dateTimeMatch ? dateTimeMatch[2] : ''
+
   return (
     <motion.section
       className="flex flex-1 flex-col justify-center"
@@ -598,9 +602,14 @@ function DoneStep({
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-3xl shadow">
           💌
         </div>
-        <h2 className="mt-2 text-[1.7rem] font-semibold leading-tight text-stone-900">
-          {selectedDate}
-          <br />
+
+        <p className="mt-3 text-sm font-semibold text-rose-500">
+          {datePart}
+          {timePart && <span className="mx-1">·</span>}
+          {timePart}
+        </p>
+
+        <h2 className="mt-1.5 text-[1.7rem] font-semibold leading-tight text-stone-900">
           만나서 {selectedFood} 먹고
           <br />
           재밌게 놀자!
