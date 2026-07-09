@@ -73,6 +73,7 @@ const imageAssets = [
   '/younghoon-crying.png',
   '/younghoon-coat.png',
   '/paris.png',
+  '/couple.png',
   '/teardrop.svg',
   '/thought-bubble.svg',
 ]
@@ -613,34 +614,54 @@ function DoneStep({
 
   return (
     <motion.section
-      className="flex min-h-0 flex-1 flex-col justify-center"
+      className="flex min-h-0 flex-1 flex-col"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
       transition={{ duration: 0.35 }}
     >
-      <div className="rounded-[2rem] bg-[linear-gradient(180deg,_#fffdfc,_#ffe2d7)] p-4 text-center shadow-[0_18px_40px_rgba(180,97,74,0.14)]">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-3xl shadow">
-          💌
-        </div>
+      <div className="relative min-h-0 flex-1 overflow-hidden rounded-[2rem] bg-[#fff7f2] text-center shadow-[0_18px_40px_rgba(180,97,74,0.14)]">
+        {/* 배경 사진: 처음엔 안 보이다가 서서히 페이드인 */}
+        <motion.img
+          src="/couple.png"
+          alt="영훈과 해원"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.1, delay: 0.5, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/5 to-black/60"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.1, delay: 0.5, ease: 'easeInOut' }}
+        />
 
-        <p className="mt-3 text-sm font-semibold text-rose-500">
-          {datePart}
-          {timePart && <span className="mx-1">·</span>}
-          {timePart}
-        </p>
+        {/* 텍스트: 화면 중앙에서 시작해 상단으로 이동 */}
+        <motion.div
+          className="absolute inset-x-0 flex justify-center px-5"
+          initial={{ top: '50%', y: '-50%' }}
+          animate={{ top: '7%', y: '0%' }}
+          transition={{ duration: 1.1, delay: 0.5, ease: 'easeInOut' }}
+        >
+          <div className="w-full max-w-[16rem] rounded-[1.6rem] bg-white/40 px-2 py-4 text-center shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-rose-50 text-2xl">
+              💌
+            </div>
 
-        <h2 className="mt-1.5 text-[1.7rem] font-semibold leading-tight text-stone-900">
-          만나서 {selectedFood} 먹고
-          <br />
-          재밌게 놀자!
-        </h2>
+            <p className="mt-2 text-xs font-semibold text-rose-500">
+              {datePart}
+              {timePart && <span className="mx-1">·</span>}
+              {timePart}
+            </p>
 
-        <div className="mt-4 rounded-[1.4rem] bg-white/75 px-4 py-3 text-left text-sm leading-5 text-stone-700">
-          <p>선택한 메뉴: {selectedFood}</p>
-          <p>선택한 날짜: {selectedDate}</p>
-          <p>상태: 해원의 수락으로 영훈이 매우 행복함</p>
-        </div>
+            <h2 className="mt-1 text-lg font-semibold leading-snug text-stone-900">
+              만나서 {selectedFood} 먹고
+              <br />
+              재밌게 놀자!
+            </h2>
+          </div>
+        </motion.div>
       </div>
 
       <div className="mt-3 flex gap-3">
