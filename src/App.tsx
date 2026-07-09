@@ -139,13 +139,13 @@ function App() {
   const [isRejectModalOpen, setIsRejectModalOpen] = useState(false)
 
   return (
-    <main className="h-[100dvh] overflow-hidden bg-[radial-gradient(circle_at_top,_#fff8f4,_#ffd7d0_45%,_#ffebe6_72%,_#fff7f2)] px-3 py-3 text-stone-800">
-      <div className="mx-auto flex h-full w-full max-w-sm flex-col overflow-hidden rounded-[2rem] border border-white/70 bg-white/70 shadow-[0_24px_80px_rgba(166,77,53,0.18)] backdrop-blur">
+    <main className="h-[100svh] overflow-y-auto bg-[radial-gradient(circle_at_top,_#fff8f4,_#ffd7d0_45%,_#ffebe6_72%,_#fff7f2)] px-3 py-3 text-stone-800">
+      <div className="mx-auto flex h-full min-h-0 w-full max-w-sm flex-col overflow-hidden rounded-[2rem] border border-white/70 bg-white/70 shadow-[0_24px_80px_rgba(166,77,53,0.18)] backdrop-blur">
 
 
-        <div className="flex flex-1 flex-col">
+        <div className="flex min-h-0 flex-1 flex-col">
 
-          <div className="flex flex-1 flex-col px-4 pb-3">
+          <div className="flex min-h-0 flex-1 flex-col px-4 pb-3">
             <AnimatePresence mode="wait">
               {step === 'invite' && (
                 <InviteStep
@@ -259,7 +259,7 @@ function InviteStep({
 
   return (
     <motion.section
-      className="flex flex-1 flex-col"
+      className="flex min-h-0 flex-1 flex-col"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
@@ -267,7 +267,7 @@ function InviteStep({
     >
 
 
-      <div className="relative mt-1 flex-1 overflow-hidden rounded-[1.75rem] bg-[linear-gradient(180deg,_#ffe7de,_#fff5ee)] shadow-inner">
+      <div className="relative mt-1 min-h-0 flex-1 overflow-hidden rounded-[1.75rem] bg-[linear-gradient(180deg,_#ffe7de,_#fff5ee)] shadow-inner">
         <img
           src="/younghoon-happy.png"
           alt="꽃다발을 들고 있는 영훈"
@@ -352,13 +352,13 @@ function FoodStep({
 
   return (
     <motion.section
-      className="flex flex-1 flex-col"
+      className="flex min-h-0 flex-1 flex-col"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
       transition={{ duration: 0.35 }}
     >
-      <div className="relative mt-1 flex-1 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_top,_#fff,_#ffe9df_45%,_#ffd7ca)]">
+      <div className="relative mt-1 min-h-0 flex-1 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_top,_#fff,_#ffe9df_45%,_#ffd7ca)]">
         <img
           src="/younghoon-food.png"
           alt="데이트를 기대하는 영훈"
@@ -455,13 +455,13 @@ function DateStep({
 
   return (
     <motion.section
-      className="flex flex-1 flex-col"
+      className="flex min-h-0 flex-1 flex-col"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
       transition={{ duration: 0.35 }}
     >
-      <div className="flex flex-1 flex-col justify-center gap-4">
+      <div className="flex min-h-0 flex-1 flex-col justify-center gap-4">
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold text-stone-700">
             날짜
@@ -528,13 +528,13 @@ function ArrivingStep({ onDone }: { onDone: () => void }) {
 
   return (
     <motion.section
-      className="flex flex-1 flex-col"
+      className="flex min-h-0 flex-1 flex-col"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
       transition={{ duration: 0.35 }}
     >
-      <div className="relative mt-1 flex-1 overflow-hidden rounded-[1.75rem] bg-stone-900">
+      <div className="relative mt-1 min-h-0 flex-1 overflow-hidden rounded-[1.75rem] bg-stone-900">
         {/* 배경 사진: 크게 깔고 살짝 흐리게 */}
         <img
           src="/paris.png"
@@ -592,7 +592,7 @@ function DoneStep({
 
   return (
     <motion.section
-      className="flex flex-1 flex-col justify-center"
+      className="flex min-h-0 flex-1 flex-col justify-center"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -24 }}
